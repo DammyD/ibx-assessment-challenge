@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Book Collection Application
+**Table of Contents**
+- [Overview](#overview)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Features](#features)
+- [Technologies Used](#technologies-used)
 
-## Getting Started
+## Overview
+The Academy Online Course Replication is a web application designed to replicate a specified Figma template while integrating live course data using the Get Books API. This educational platform provides a visually appealing and user-friendly interface for users to explore and discover new courses effortlessly.
 
-First, run the development server:
+**Prerequisites**
+Before you begin, ensure you have met the following requirements:
 
-```bash
+*Make sure you have Node.js installed on your machine. You can download it from [Node.js](nodejs.org.)*
+
+### Installation
+Follow these steps to set up the project locally:
+
+1. **Clone the Repository:** Start by cloning the repository to your local machine using Git:
+
+    ```bash
+    git clone https://github.com/HNG-Tasks/Stage-three-task.git
+
+2. **Navigate to the Project Directory:** Change your current directory to the project folder:
+
+cd book-collection
+
+3. **Install Dependencies:** Install the project dependencies using npm:
+
+npm install
+
+### Usage
+To run the Image Book Collection App locally, follow these steps:
+
+**Start the Development Server:** Launch the Vite development server:
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. **Open in Browser:** Open your web browser and navigate to http://localhost:3000 to access the application interface.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Features
+A user friendly interface
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### Technologies Used
+- Frontend: 
+* TypeScript 
+* NextJS 
+* Redux Toolkit(Intended to be used but wasn't implemented)
