@@ -7,7 +7,7 @@ import { footerLinks } from "@/constants";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-75">
+    <footer className="bg-gray-75 mt-10">
       <div className="flex flex-col md:flex-row">
         <div className="bg-purple-25 p-3 md:p-5 rounded-3xl rounded-br-md lg:p-7 mx-6 my-6 flex-2">
           <p className="text-gray-700 whitespace-wrap">
