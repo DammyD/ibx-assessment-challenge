@@ -12,7 +12,7 @@ const BooksCard = ({ book }: BooksCardProps) => {
     // console.log(cover_image);
 
   return (
-    <div className="flex-1 w-full items-center pt-10 relative">
+    <div key={id} className="flex-1 w-full items-center pt-10 relative">
         <div className="flex flex-wrap relative">
             <div className="card border px-3 py-3 rounded-md">
             {cover_image ? (

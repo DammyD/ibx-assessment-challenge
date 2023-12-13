@@ -5,7 +5,7 @@ import { FaBookBookmark } from "react-icons/fa6";
 import { GiTrophyCup } from "react-icons/gi";
 import { BsFillPersonFill } from "react-icons/bs";
 import { CustomButton } from "..";
-import SubCourse from "../SubCourse";
+
 
 interface YourCoursesCardProps {
   course: CoursesCardProps;
@@ -13,6 +13,7 @@ interface YourCoursesCardProps {
 
 const CoursesCard = ({ course }: YourCoursesCardProps) => {
   const {
+    id,
     image,
     name,
     title,
@@ -20,11 +21,10 @@ const CoursesCard = ({ course }: YourCoursesCardProps) => {
     award,
     subImage,
     subname,
-    substudent,
     subtitle,
   } = course;
   return (
-    <div className="flex flex-col sm:flex-row gap-4 card border p-3 bg-white rounded-md">
+    <div key={id} className="flex flex-col sm:flex-row gap-4 card border p-3 bg-white rounded-md">
       <div>
         <Image
           src={image}

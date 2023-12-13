@@ -78,7 +78,7 @@ const Footer = () => {
             </h3>
             {[
               { name: "Ellsmartx", comment: "How Nice Does this look 😍I feel it should be delicious" },
-              { name: "Cassia", comment: `Take A rest. I'll cheer you up again in 2 next game go g...` },
+              { name: "Cassia", comment: "Take A rest. I&apos;ll cheer you up again in 2 next game go g..." },
               { name: "Amanda", comment: "You were stunning today. jan! ❤️ great match👍🏼👍🏼" },
               { name: "Denis Simonassi", comment: "It was a great match today janz! you did great😉🇩🇪" },
             ].map((item, index) => (
