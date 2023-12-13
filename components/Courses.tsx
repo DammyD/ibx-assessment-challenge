@@ -6,9 +6,15 @@ import { fetchBooks } from "@/utils";
 import { BooksCard } from ".";
 import Link from "next/link";
 
+interface BookProps {
+  id: number; 
+  title: string; 
+  cover_image: string; 
+}
+
 const Courses = () => {
-  const [allBooks, setAllBooks] = useState([]);
-  const [searchResults, setSearchResults] = useState([]);
+  const [allBooks, setAllBooks] = useState<BookProps[]>([]);
+  const [searchResults, setSearchResults] = useState<BookProps[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
   
   useEffect(() => {
@@ -25,7 +31,7 @@ const Courses = () => {
     fetchAllBooks();
   }, []); // Empty dependency array ensures the effect runs only once on mount
 
-  const handleSearch = (results: SetStateAction<never[]>) => {
+  const handleSearch = (results: SetStateAction<BookProps[]>) => {
     // Update the search results in the state
     setSearchResults(results);
   };
@@ -54,22 +60,22 @@ const Courses = () => {
             <h4 className="font-bold text-base">All course</h4>
           </div>
           <div className="rounded-md px-4 py-3.5 m-2 hover:text-purple-100">
-            <Link href="/" className="font-bold text-base">
+            <Link href="/" className="font-semibold text-base">
               design
             </Link>
           </div>
           <div className="rounded-md px-4 py-3.5 m-2 hover:text-purple-100">
-            <Link href="/" className="font-bold text-base">
+            <Link href="/" className="font-semibold text-base">
               development
             </Link>
           </div>
           <div className="rounded-md px-4 py-3.5 m-2 hover:text-purple-100">
-            <Link href="/" className="font-bold text-base">
+            <Link href="/" className="font-semibold text-base">
               photography
             </Link>
           </div>
           <div className="rounded-md px-4 py-3.5 m-2 hover:text-purple-100">
-            <Link href="/" className="font-bold text-base">
+            <Link href="/" className="font-semibold text-base">
               music
             </Link>
           </div>
@@ -84,7 +90,7 @@ const Courses = () => {
       <section>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 rounded-md shadow-md mt-4">
           {allBooks.map((book) => (
-            <BooksCard book={book} />
+            <BooksCard key={book.id} book={book} />
           ))}
         </div>
       </section>

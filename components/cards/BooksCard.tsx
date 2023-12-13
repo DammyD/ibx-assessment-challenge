@@ -8,7 +8,7 @@ interface BooksCardProps {
 }
 
 const BooksCard = ({ book }: BooksCardProps) => {
-    const {cover_image, title} = book;
+    const {cover_image, title, id} = book;
     // console.log(cover_image);
 
   return (

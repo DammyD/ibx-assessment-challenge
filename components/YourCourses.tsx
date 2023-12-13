@@ -23,7 +23,7 @@ const YourCourses = () => {
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4 sm:gap-8">
         {yourCourses.map((course) => (
-          <CoursesCard course={course} />
+          <CoursesCard key={course.id} course={course} />
         ))}
       </div>
       <div className="flex flex-col items-center gap-5 p-4 sm:p-20 mt-8 bg-[#f6f7fe] relative">

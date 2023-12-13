@@ -55,7 +55,7 @@ const Instructors = () => {
             <div className="flex flex-wrap m-4 relative z-20">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 rounded-md shadow-md">
             {cardData.map((card) => (
-            <Card card={card}/>  
+            <Card key={card.id} card={card}/>  
         ))}
         </div>
         </div>    

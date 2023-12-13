@@ -6,7 +6,7 @@ interface InstructorCardProps {
 }
 
 const Card = ({ card }: InstructorCardProps) => {
-    const {image, name, title} = card;
+    const {image, name, title, id} = card;
     return (
       <div className="card border p-3 bg-white rounded-md max-w-xs mx-auto sm:max-w-none sm:w-full">
         <div>
