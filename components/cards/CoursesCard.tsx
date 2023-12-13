@@ -24,7 +24,7 @@ const CoursesCard = ({ course }: YourCoursesCardProps) => {
     subtitle,
   } = course;
   return (
-    <div key={id} className="flex flex-col sm:flex-row gap-4 card border p-3 bg-white rounded-md">
+    <div className="flex flex-col sm:flex-row gap-4 card border p-3 bg-white rounded-md">
       <div>
         <Image
           src={image}

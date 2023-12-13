@@ -13,7 +13,7 @@ interface YourTopCoursesCardProps {
 const TopCourseCard = ({course}: YourTopCoursesCardProps) => {
     const {image, name, title, student, award, id} = course;
   return (
-    <div key={id} className="card border px-3 py-3 bg-white rounded-md sm:gap-4">
+    <div className="card border px-3 py-3 bg-white rounded-md sm:gap-4">
          <div>
         <Image src={image} width={300} height={200} alt={name} className="card-image rounded-md" />
         </div>
