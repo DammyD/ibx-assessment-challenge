@@ -17,26 +17,26 @@ const Navbar = () => {
     <>
       <header className="bg-white h-[100px] px-8 lg:px-[40px] xl:px-[50px] w-screen max-w-[1440px] flex justify-between items-center border">
       <nav className="flex items-center justify-between lg:justify-start">
-        <div className="flex items-center">
+        <div className="lg:gap-0 gap-20 justify-between flex items-center">
           <Link href="/" className="flex items-center">
             <Image src={Logo} width={30} height={30} alt="logo" />
             <h1 className="uppercase font-bold ml-2 text-3xl">
               Academy
             </h1>
           </Link>
-          </div>
-          {/* Display the burger menu icon for mobile */}
-          <div className="lg:hidden ml-auto ">
-            <SlMenu size="25" onClick={() => setOpen(!open)} />
+                   {/* Display the burger menu icon for mobile */}  
+          <div className="lg:hidden ml-auto" onClick={() => setOpen(!open)}>
+            <SlMenu size="30"/>
           </div>
           {/* Display navigation links on larger screens */}
           <ul className="hidden h-full gap-8 lg:flex ml-8">
-            <Nav_Links />
+            <Nav_Links handleLinkClick={() => setOpen(false)}/>            
           </ul>
+          </div>
         </nav>
 
         {/* Search bar */}
-        <div className="hidden lg:block lg:w-[300px] lg:h-[60px] bg-[#fafafa] w-full h-full py-4 px-3 lg:rounded-[6px] items-center gap-1">
+        <div className="hidden lg:block lg:w-[300px] lg:h-[50px] bg-[#fafafa] w-full h-full py-4 px-3 lg:rounded-[6px] items-center gap-1">
           <div className="flex">
           <input
             type="text"
@@ -48,8 +48,8 @@ const Navbar = () => {
         </div>
 
         {/* User profile section */}
-        <div className="hidden lg:flex items-center ml-4">
-          <div>
+        <div className="hidden lg:flex gap-5 items-center ml-4">
+          <div className="flex text-center">
             <Image
               src={profile}
               width={50}
@@ -57,28 +57,25 @@ const Navbar = () => {
               alt="profile"
               className="rounded-md overflow-hidden"
             />
-          </div>
-          <div className="ml-2">
+                <div className="ml-2">
             <h3 className="text-sm font-semibold">Behzad Pashaei</h3>
             <p className="text-xs text-gray-25 mt-2">Ui & Ux Designer</p>
           </div>
-        </div>
-
-        {/* Bell icon */}
-        <div className="hidden lg:block bg-gray-50 px-3 py-3 rounded-md overflow-hidden">
+          </div>
+             {/* Bell icon */}
+             <div className="hidden lg:block bg-gray-50 px-3 py-3 rounded-md overflow-hidden">
           <BsBellFill size="25" fill="#9e5cf2" />
+        </div>
         </div>
       </header>
 
       {/* Mobile navigation */}
-      {open && (
-        <ul className="lg:hidden fixed inset-0 bg-white z-50 ">
-          <div className="flex justify-end p-4">
-            <MdClose size="25" onClick={() => setOpen(false)} />
-          </div>
-          <Nav_Links />
-        </ul>
-      )}
+      <ul className={`lg:hidden fixed inset-0 bg-white w-full h-full bottom-0 z-50 duration-500 transform ${open ? 'translate-x-0' : 'translate-x-full'}`}>
+        <div className="flex justify-end p-4" onClick={() => setOpen(false)}>
+          <MdClose size="30"/>
+        </div>
+        <Nav_Links handleLinkClick={() => setOpen(false)}/>
+      </ul>
     </>
   );
 };

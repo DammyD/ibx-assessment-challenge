@@ -2,6 +2,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { MdKeyboardArrowDown, MdKeyboardArrowRight  } from "react-icons/md";
+import { FaSearch } from "react-icons/fa";
 
 interface Sublink {
   href: string;
@@ -17,7 +18,11 @@ interface NavLink {
   sublinks?: Sublink[];
 }
 
-const Nav_Links: React.FC = () => {
+interface NavLinksProps {
+  handleLinkClick: () => void;
+}
+
+const Nav_Links: React.FC <{ handleLinkClick: () => void }> = ({ handleLinkClick}) => {
   
   const links: NavLink[] = [
     {
@@ -48,22 +53,26 @@ const Nav_Links: React.FC = () => {
     <>
       {links.map((link) => (
         <div key={link.key} className="relative group">
-          <Link href={link.href} key={link.key} className="regular-16 text-gray-25 font-medium flex items-center gap-6 cursor-pointer transition-all">
-            {link.label}
-            <div className='underline absolute left-0 bottom-0 h-1 w-3 rounded bg-purple-100 opacity-0 transition-opacity group-hover:opacity-100'></div>
+          <div className="group">
+         <Link href={link.href} key={link.key} className="md:cursor-pointer py-7 regular-16 text-gray-25 font-medium flex justify-around items-center gap-6 cursor-pointer transition-all relative">
+            <span className="relative">
+              {link.label}
+              <div className='underline absolute left-0 bottom-0 h-1 w-3 rounded bg-purple-100 opacity-0 transition-opacity group-hover:opacity-100'></div>
+            </span>
             <div className=''>
-            {link.submenu && (
-              <span className="ml-auto transform transition-transform">
-                {link.label === 'Categories' ? <MdKeyboardArrowDown className="transition-transform 0.5s ease  hover:rotate-180" size="20"/> : null}
-              </span>
-            )}
+              {link.submenu && (
+                <span className="ml-auto transform transition-transform">
+                  {link.label === 'Categories' ? <MdKeyboardArrowDown className="transition-transform 0.5s ease  hover:rotate-180" size="20"/> : null}
+                </span>
+              )}
             </div>
           </Link>
+          </div>
           {link.submenu && (
-            <div className="lg:absolute top-full left-0 bg-white rounded-md p-2 sm:p-5 opacity-0 group-hover:opacity-100 transition-opacity z-10 shadow-md">
+            <div className="absolute top-full left-0 bg-white rounded-md p-2 sm:p-5 opacity-0 group-hover:opacity-100 transition-opacity z-10 shadow-md">
               {link.sublinks?.map((slink) => (
                 <div key={slink.key} className="text-sm text-gray-25 my-2 sm:my-3.5">
-                  <Link href={slink.href} className="block items-center hover:text-purple-100 whitespace-nowrap">
+                  <Link href={slink.href} className="md:cursor-pointer block items-center hover:text-purple-100 cursor-pointer whitespace-nowrap" onClick={handleLinkClick}>
                     <div className='flex items-center gap-2 sm:gap-10'>
                     {slink.label}
                     <span className="ml-auto">
@@ -77,6 +86,19 @@ const Nav_Links: React.FC = () => {
           )}
         </div>
       ))}
+      {/* Search bar - Visible only on small screens */}
+      <div className="lg:hidden w-full">
+        <div className="w-4/5 h-full ml-8 py-4 px-3 rounded-[6px] items-center gap-1 bg-[#fafafa]">
+          <div className="flex">
+            <input
+              type="text"
+              placeholder="Search Anything"
+              className="w-full h-full bg-[#fafafa] text-sm outline-none placeholder:text-[#bdbdbd]"
+            />
+            <FaSearch size="20" color="#bdbdbd" />
+          </div>
+        </div>
+      </div>
     </>
   );
 };

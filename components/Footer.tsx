@@ -43,8 +43,8 @@ const Footer = () => {
             </h3>
             <Image
               src={certificate}
-              width={100}
-              height={100}
+              width={500}
+              height={200}
               alt="certificate"
               className="object-container"
             />

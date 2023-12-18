@@ -1,5 +1,5 @@
 "use client";
-import { SetStateAction, useEffect, useState } from "react";
+import {  useEffect, useState } from "react";
 import SearchBar from "./SearchBar";
 import { FaFilter } from "react-icons/fa";
 import { fetchBooks } from "@/utils";
@@ -12,29 +12,74 @@ interface BookProps {
   cover_image: string; 
 }
 
-const Courses = () => {
+const Courses = ({}) => {
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<Error | null>(null);
   const [allBooks, setAllBooks] = useState<BookProps[]>([]);
   const [searchResults, setSearchResults] = useState<BookProps[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 8;
   
   useEffect(() => {
-    // Fetch all books initially or when the component mounts
+    setLoading(true);
+    setError(null);
     const fetchAllBooks = async () => {
       try {
-        const books = await fetchBooks(); // Replace with your actual API call or data fetching logic
+        const books = await fetchBooks();
         setAllBooks(books);
+        setLoading(false);
       } catch (error) {
-        console.error('Error fetching books:', error);
+       setError(error as Error);
+       setLoading(false);
       }
     };
 
     fetchAllBooks();
   }, []); // Empty dependency array ensures the effect runs only once on mount
 
-  const handleSearch = (results: SetStateAction<BookProps[]>) => {
-    // Update the search results in the state
-    setSearchResults(results);
+  const handleSearch = async (query: string) => {
+    // Update the search query
+    setSearchQuery(query);
+  
+    // If the query is empty, reset the search results to allBooks
+    if (query.trim() === '') {
+      setSearchResults(allBooks);
+      return;
+    }
+  
+    // Perform the search using the new API
+    try {
+      setLoading(true);
+      setError(null);
+  
+      const response = await fetch(`https://freetestapi.com/api/v1/books?search=${encodeURIComponent(query)}`);
+      const searchResultsData = await response.json();
+      console.log('Search Results:', searchResultsData);
+  
+      // Update the search results in the state
+      setSearchResults(searchResultsData);
+      setLoading(false);
+    } catch (error) {
+      setError(error as Error);
+      setLoading(false);
+    }
   };
+
+  const lastBookIndex = currentPage * itemsPerPage;
+  const firstBookIndex = lastBookIndex - itemsPerPage;
+  const currentBooks = allBooks.slice(firstBookIndex, lastBookIndex);
+
+  const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
+  
+
+  if (loading) {
+    return <p>loading...</p>;
+  }
+  if (error) {
+    return <p>Error: {error.message}</p>;
+  }
+
   return (
     <div className="mt-12 padding-x padding-y max-w-full sm:max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl mx-auto" id="collection">
       <div className="flex flex-col items-center justify-center">
@@ -45,7 +90,7 @@ const Courses = () => {
         </h1>
         <div></div>
       </div>
-      <SearchBar onSearch={handleSearch}/>
+      <SearchBar handleSearch={handleSearch}/>
 
       <div className="flex flex-col sm:flex-row justify-between items-center mt-5 sm:mt-10">
         <div className="mb-4 sm:mb-0">
@@ -89,9 +134,26 @@ const Courses = () => {
 
       <section>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 rounded-md shadow-md mt-4">
-          {allBooks.map((book) => (
+          {currentBooks.map((book) => (
             <BooksCard key={book.id} book={book} />
           ))}
+        </div>
+         {/* Pagination buttons */}
+         <div className="flex justify-center mt-4">
+          <button
+            onClick={() => paginate(currentPage - 1)}
+            disabled={currentPage === 1}
+            className="bg-purple-700 text-white px-4 py-2 mr-2 rounded-md cursor-pointer"
+          >
+            Previous
+          </button>
+          <button
+            onClick={() => paginate(currentPage + 1)}
+            disabled={lastBookIndex >= allBooks.length}
+            className="bg-purple-700 text-white px-4 py-2 rounded-md cursor-pointer"
+          >
+            Next
+          </button>
         </div>
       </section>
     </div>

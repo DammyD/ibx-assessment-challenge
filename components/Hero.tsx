@@ -26,7 +26,7 @@ const Hero = () => {
   
   return (
     <>
-      <div className="flex capitalize justify-around items-center mt-10 flex-wrap ml-10">
+      <div className="flex capitalize justify-around items-center mt-10 flex-wrap ml-3">
         <div className="bg-green-100 rounded-md px-3 py-3 m-2">
           <Image src={code} width={40} height={40} alt="code" />
         </div>
@@ -48,7 +48,7 @@ const Hero = () => {
         <div className="bg-gray-100 rounded-md px-4 py-3.5 m-2">
           <h4 className="font-bold">vector</h4>
         </div>
-        <div className="bg-orange-50 rounded-md px-3 py-3.5 m-2">
+        <div className="bg-orange-50 rounded-md px-3 py-3 m-2">
           <Image src={bulb} width={40} height={40} alt="bulb" />
         </div>
         <div className="bg-gray-100 rounded-md px-4 py-3.5 m-2">
@@ -63,9 +63,9 @@ const Hero = () => {
         <MdKeyboardArrowRight size="30" className="m-2" />
       </div>
 
-      <div className="flex flex-col sm:flex-row justify-between">
-        <div className="flex-1 pt-16 sm:pt-36 px-4 sm:px-8">
-          <h1 className="2xl:text-[50px] sm:text-[40px] text-[30px] font-extrabold mb-8 whitespace-nowrap leading-relaxed">
+      <div className="flex flex-col sm:flex-row justify-around items-center">
+        <div className="flex-1 pt-10 sm:pt-20 px-4 sm:px-8">
+          <h1 className="2xl:text-4xl sm:text-3xl text-2xl font-extrabold mb-4 sm:mb-8 leading-tight sm:leading-relaxed">
             &#128588; Hello Friends <br /> I Am Sofia And We Want To Start{" "}
             <br /> A{" "}
             <span
@@ -113,8 +113,8 @@ const Hero = () => {
           </div>
         </div>
 
-          <div className="flex-1 w-full sm:w-[50%] items-center pt-16 sm:pt-36 px-4 sm:px-8 relative">
-            <div className="w-[400px] xl:w-[450px] h-[400px] xl:h-[450px] flex px-6 xl:px-12 py-4 xl:py-8 justify-between right-[-90px] top-[20px] relative bg-purple-300 z-10 rounded-full shadow-md">
+          <div className="flex-1 w-full sm:w-[30%] items-center pt-10 sm:pt-30 px-4 sm:px-8 relative">
+            <div className="w-[400px] xl:w-[450px] h-[400px] xl:h-[450px] flex px-6 xl:px-12 py-4 xl:py-8 justify-start right-[-90px] top-[20px] relative bg-purple-300 z-10 rounded-full shadow-md">
               <Image
                 src={ellipse}
                 width={15}
@@ -130,7 +130,7 @@ const Hero = () => {
                 className="object-contain"
                 alt="hero"
               />
-              <h2 className=" text-4xl uppercase font-bold text-left mb-4 ml-[128px] mt-5">
+              <h2 className=" text-5xl uppercase font-bold text-left mb-4 ml-[128px] mt-5">
                 <span style={{backgroundImage: "linear-gradient(to right, #FAC1F1, #FFF)",
                 WebkitBackgroundClip: "text",
                 color: "transparent",}} className="p-2">Ui</span>
@@ -147,14 +147,14 @@ const Hero = () => {
                   width={30}
                   height={30}
                   alt="icon"
-                  className=" mb-[80px] top-20 mt-30"
+                  className=""
                 />
                 <Image
                   src={book}
                   width={20}
                   height={20}
                   alt="icon"
-                  className="mt-[80px]"
+                  className=""
                 />
               </div>
             </div>
